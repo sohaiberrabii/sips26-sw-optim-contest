@@ -5,6 +5,7 @@
 
 #pragma once
 
+#include <stddef.h>
 #include <stdint.h>
 
 #include "motion/CCL/CCL_struct.h"
@@ -69,6 +70,14 @@ uint32_t _CCL_LSL_apply(uint32_t** CCL_data_er, uint32_t** CCL_data_era, uint32_
  * @return Number of labels.
  */
 uint32_t CCL_LSL_apply(CCL_data_t *CCL_data, const uint8_t** img, uint32_t** labels, const uint8_t no_init_labels);
+
+/**
+ * Compute CCL and RoI features in the same final pass.
+ * \p labels can be NULL when the full label image is not needed.
+ */
+uint32_t CCL_LSL_apply_extract(CCL_data_t* CCL_data, const uint8_t** img, uint32_t** labels,
+                               const uint8_t no_init_labels, RoI_t* RoIs, uint64_t* RoIs_sum_x,
+                               uint64_t* RoIs_sum_y, const size_t max_RoIs);
 
 /**
  * Free the inner data.
