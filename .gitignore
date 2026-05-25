@@ -72,3 +72,5 @@ doc/source/api/*
 *__pycache__*
 
 *.pdf
+traffic/
+traffic.zip
